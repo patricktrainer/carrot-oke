@@ -91,7 +91,6 @@ function App() {
 
   return (
     <div className="App">
-      <AssetStatus showDetails={process.env.NODE_ENV === 'development'} />
       
       <header className="app-header">
         <h1>🎤 Carrot-Oke 🥕</h1>
