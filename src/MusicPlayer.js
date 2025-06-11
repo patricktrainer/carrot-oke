@@ -29,6 +29,13 @@ const MusicPlayer = ({
     }
   }, [currentSong]);
 
+  const handleNext = useCallback(() => {
+    const nextIndex = currentSongIndex < songList.length - 1 ? currentSongIndex + 1 : 0;
+    if (onSongChange) {
+      onSongChange(nextIndex);
+    }
+  }, [currentSongIndex, songList.length, onSongChange]);
+
   // Time update handler
   useEffect(() => {
     const audio = audioRef.current;
@@ -89,12 +96,7 @@ const MusicPlayer = ({
     }
   };
 
-  const handleNext = useCallback(() => {
-    const nextIndex = currentSongIndex < songList.length - 1 ? currentSongIndex + 1 : 0;
-    if (onSongChange) {
-      onSongChange(nextIndex);
-    }
-  }, [currentSongIndex, songList.length, onSongChange]);
+  
 
   const handleSeek = (e) => {
     const audio = audioRef.current;

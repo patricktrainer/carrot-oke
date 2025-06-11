@@ -117,7 +117,6 @@ function App() {
             <li>📍 Click the progress bar to seek</li>
             <li>🎤 Follow the highlighted lyrics</li>
           </ul>
-          <p><strong>Note:</strong> Add your own audio files to the <code>/public/audio/</code> folder and update the song URLs!</p>
         </div>
       </main>
     </div>
