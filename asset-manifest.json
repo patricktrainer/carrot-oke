@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/carrot-oke/static/css/main.8d3dd16d.css",
+    "main.js": "/carrot-oke/static/js/main.47405a86.js",
+    "static/js/453.43beb45d.chunk.js": "/carrot-oke/static/js/453.43beb45d.chunk.js",
+    "index.html": "/carrot-oke/index.html",
+    "main.8d3dd16d.css.map": "/carrot-oke/static/css/main.8d3dd16d.css.map",
+    "main.47405a86.js.map": "/carrot-oke/static/js/main.47405a86.js.map",
+    "453.43beb45d.chunk.js.map": "/carrot-oke/static/js/453.43beb45d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8d3dd16d.css",
+    "static/js/main.47405a86.js"
+  ]
+}
