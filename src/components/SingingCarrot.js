@@ -64,7 +64,8 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
     }, getAnimationSpeed());
 
     return () => clearInterval(interval);
-  }, [isPlaying, isVisible, carrotFrames.length, getAnimationSpeed]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPlaying, isVisible, carrotFrames.length, songTitle]);
 
   // Handle word bounce animation - only when visible and not completed
   useEffect(() => {
@@ -86,7 +87,8 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
     }, getWordBounceSpeed());
 
     return () => clearInterval(wordInterval);
-  }, [isVisible, hasCompletedLine, currentWords.length, isPlaying, getWordBounceSpeed]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible, hasCompletedLine, currentWords.length, isPlaying]);
 
   // Don't render anything if not visible
   if (!isVisible || !isPlaying || !currentLyric) {

@@ -28,6 +28,20 @@ const MusicPlayer = ({
     }
   }, [currentSong]);
 
+  const handlePrevious = () => {
+    const prevIndex = currentSongIndex > 0 ? currentSongIndex - 1 : songList.length - 1;
+    if (onSongChange) {
+      onSongChange(prevIndex);
+    }
+  };
+
+  const handleNext = () => {
+    const nextIndex = currentSongIndex < songList.length - 1 ? currentSongIndex + 1 : 0;
+    if (onSongChange) {
+      onSongChange(nextIndex);
+    }
+  };
+
   // Time update handler
   useEffect(() => {
     const audio = audioRef.current;
@@ -80,19 +94,7 @@ const MusicPlayer = ({
     setIsPlaying(!isPlaying);
   };
 
-  const handlePrevious = () => {
-    const prevIndex = currentSongIndex > 0 ? currentSongIndex - 1 : songList.length - 1;
-    if (onSongChange) {
-      onSongChange(prevIndex);
-    }
-  };
 
-  const handleNext = () => {
-    const nextIndex = currentSongIndex < songList.length - 1 ? currentSongIndex + 1 : 0;
-    if (onSongChange) {
-      onSongChange(nextIndex);
-    }
-  };
 
   const handleSeek = (e) => {
     const audio = audioRef.current;

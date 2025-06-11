@@ -67,7 +67,8 @@ const MusicPlayer = ({
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleNext);
     };
-  }, [lyrics, currentLyricIndex, onLyricsSync, handleNext]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lyrics, currentLyricIndex, onLyricsSync]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
