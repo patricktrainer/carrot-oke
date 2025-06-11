@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './MusicPlayer.css';
 import SingingCarrot from './components/SingingCarrot';
 
@@ -67,7 +67,7 @@ const MusicPlayer = ({
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleNext);
     };
-  }, [lyrics, currentLyricIndex, onLyricsSync]);
+  }, [lyrics, currentLyricIndex, onLyricsSync, handleNext]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -88,12 +88,12 @@ const MusicPlayer = ({
     }
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     const nextIndex = currentSongIndex < songList.length - 1 ? currentSongIndex + 1 : 0;
     if (onSongChange) {
       onSongChange(nextIndex);
     }
-  };
+  }, [currentSongIndex, songList.length, onSongChange]);
 
   const handleSeek = (e) => {
     const audio = audioRef.current;

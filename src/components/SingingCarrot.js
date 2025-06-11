@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './SingingCarrot.css';
 import { IMAGE_PATHS } from '../utils/assets';
 
@@ -20,18 +20,18 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
   };
 
   // Different animation speeds for different songs
-  const getAnimationSpeed = () => {
+  const getAnimationSpeed = useCallback(() => {
     if (songTitle?.includes('Rap Battle')) return 150; // Faster for rap
     if (songTitle?.includes('Electronic')) return 120; // Fast for electronic
     return 200; // Normal speed for ballad
-  };
+  }, [songTitle]);
 
   // Word bounce timing based on song type
-  const getWordBounceSpeed = () => {
+  const getWordBounceSpeed = useCallback(() => {
     if (songTitle?.includes('Rap Battle')) return 300; // 300ms per word for rap
     if (songTitle?.includes('Electronic')) return 350; // 350ms per word for electronic
     return 400; // 400ms per word for ballad
-  };
+  }, [songTitle]);
 
   // Handle new lyric detection and visibility
   useEffect(() => {
@@ -64,7 +64,7 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
     }, getAnimationSpeed());
 
     return () => clearInterval(interval);
-  }, [isPlaying, isVisible, carrotFrames.length, songTitle]);
+  }, [isPlaying, isVisible, carrotFrames.length, getAnimationSpeed]);
 
   // Handle word bounce animation - only when visible and not completed
   useEffect(() => {
@@ -86,7 +86,7 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
     }, getWordBounceSpeed());
 
     return () => clearInterval(wordInterval);
-  }, [isVisible, hasCompletedLine, currentWords.length, isPlaying]);
+  }, [isVisible, hasCompletedLine, currentWords.length, isPlaying, getWordBounceSpeed]);
 
   // Don't render anything if not visible
   if (!isVisible || !isPlaying || !currentLyric) {
