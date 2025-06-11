@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './SingingCarrot.css';
+import { IMAGE_PATHS } from '../utils/assets';
 
 const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
   const [currentFrame, setCurrentFrame] = useState(0);
@@ -9,12 +10,7 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
   const [currentWords, setCurrentWords] = useState([]);
   const [hasCompletedLine, setHasCompletedLine] = useState(false);
   
-  const carrotFrames = [
-    '/carrot-closed-mouth.png',
-    '/carrot-sm-mouth.png',
-    '/carrot-open-mouth.png',
-    '/carrot-sm-mouth.png'
-  ];
+  const carrotFrames = IMAGE_PATHS.CARROT_FRAMES;
 
   // Split current lyric into words and animate each word
   const getWordsWithTiming = (lyricText) => {
@@ -118,7 +114,7 @@ const SingingCarrot = ({ isPlaying, currentTime, songTitle, currentLyric }) => {
             {word}
             {index === wordBounce && (
               <img 
-                src="/carrot-open-mouth.png"
+                src={IMAGE_PATHS.CARROT_OPEN}
                 alt="Mini Carrot"
                 className="mini-carrot"
               />

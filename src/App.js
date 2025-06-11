@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import './App.css';
 import MusicPlayer from './MusicPlayer';
+import AssetStatus from './components/AssetStatus';
+import { AUDIO_PATHS } from './utils/assets';
 
 // Karaoke songs data
 const sampleSongs = [
   {
     title: "Root Vegetable Rap Battle",
     artist: "Carrot-Oke",
-    url: "/audio/Root Vegetable Rap Battle.mp3"
+    url: AUDIO_PATHS.RAP_BATTLE
   },
   {
     title: "Don't Stop Be-leafing",
     artist: "Carrot-Oke",
-    url: "/audio/Don't Stop Be-leafing.mp3"
+    url: AUDIO_PATHS.BELEAFING
   },
   {
     title: "Electronic Carrot Dreams",
     artist: "Carrot-Oke",
-    url: "/audio/Electronic Carrot Dreams.mp3"
+    url: AUDIO_PATHS.ELECTRONIC
   }
 ];
 
@@ -89,6 +91,8 @@ function App() {
 
   return (
     <div className="App">
+      <AssetStatus showDetails={process.env.NODE_ENV === 'development'} />
+      
       <header className="app-header">
         <h1>🎤 Carrot-Oke 🥕</h1>
         <p>Your Ultimate Karaoke Experience</p>
